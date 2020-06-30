@@ -32,9 +32,6 @@ async function checkExistingUsers(req, res, next) {
     catch (error) {
         res.status(500).json({ error: error.message })
     }
-
-
-
 }
 
 function validateLogin(req, res, next) {

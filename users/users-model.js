@@ -10,6 +10,7 @@ module.exports = {
 async function add(user) {
     try {
         const [id] = await db('users').insert(user, 'id')
+
         return findById(id)
     }
     catch (error) {
@@ -18,7 +19,8 @@ async function add(user) {
 }
 
 function find() {
-
+    return db('users')
+        .select('id', 'username', 'email', 'created_at', 'updated_at')
 }
 
 function findBy(filter) {

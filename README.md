@@ -31,6 +31,15 @@
 | POST   | `api/register`   | User registration. Returns newly created user            |
 | POST   | `api/login`      | User login. If successful returns a JSON Web Token (JWT) |
 
+#### Users
+
+- Authentication required to access these resources
+---
+
+| Method | Endpoint         | Description                                              |
+| ------ | ---------------- | -------------------------------------------------------- |
+| GET    | `api/users`      | Returns a list of all users                              |
+
 ## Seed Data
 
 #### Users
