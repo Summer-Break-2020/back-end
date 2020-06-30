@@ -2,7 +2,7 @@ const router = require('express').Router()
 const bcrypt = require('bcryptjs')
 
 //Middleware
-const { validateRegister, validateLogin } = require('../middleware/validation')
+const { validateRegister, checkExistingUsers, validateLogin } = require('../middleware/validation')
 
 //Users Model
 const Users = require('../users/users-model')
@@ -11,7 +11,7 @@ const Users = require('../users/users-model')
 const { hashPassword, generateToken } = require('../users/users-service')
 
 //Register a new user
-router.post('/register', validateRegister, (req, res) => {
+router.post('/register', validateRegister, checkExistingUsers, (req, res) => {
     const userInfo = req.body
 
     //Hash the password before adding user to DB
