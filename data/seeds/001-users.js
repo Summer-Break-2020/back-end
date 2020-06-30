@@ -6,19 +6,31 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex('users').insert([
         {
-          username: 'sentinel',
+          email: 'mail@trashcan.bin',
           password: '$2y$12$1bJGNPdCsW.jO2cGxPLlK.m31RaDBeYU/DR8v6T8dqd5dtKF5ayAC',
-          email: 'mail@trashcan.com'
+          f_name: 'Jesse',
+          l_name: 'Marek',
+          location: 'Hemet, CA',
+          avatar: '',
+          role_id: 1
         },
         {
-          username: 'ravenLOL',
+          email: 'pretty.kitty@cats.org',
           password: '$2y$12$jg0MUCcwbJUlQkfSgbPPu.VmT8kPbSlf4G7CHYlS2lsYxjwSHG2m6',
-          email: 'pretty.kitty@cats.org'
+          f_name: 'Catherine',
+          l_name: 'Joy',
+          location: 'Hemet, CA',
+          avatar: '',
+          role_id: 2
         },
         {
-          username: 'gabicorn11',
+          email: 'gabby@rainbow.net',
           password: '$2y$12$AXIiWeYRxkuwYx/k9oVq6eqi7nsamxxuNi9GUNddhTckE.QwoE9pG',
-          email: 'gabby@rainbow.net'
+          f_name: 'Gabriella',
+          l_name: 'Rose',
+          location: 'Hemet, CA',
+          avatar: '',
+          role_id: 3
         }
       ]);
     });

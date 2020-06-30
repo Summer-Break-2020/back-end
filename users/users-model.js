@@ -21,7 +21,7 @@ async function add(user) {
 
 function find() {
     return db('users')
-        .select('id', 'username', 'email', 'created_at', 'updated_at')
+        .select('id', 'email', 'created_at', 'updated_at')
 }
 
 function findBy(filter) {
@@ -32,5 +32,5 @@ function findBy(filter) {
 function findById(id) {
     return db('users')
         .where({ id })
-        .select('id', 'username', 'email', 'created_at', 'updated_at')
+        .select('id', 'email', 'created_at', 'updated_at')
 }
