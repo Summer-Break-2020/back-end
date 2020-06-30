@@ -20,8 +20,9 @@ async function add(user) {
 }
 
 function find() {
-    return db('users')
-        .select('id', 'email', 'created_at', 'updated_at')
+    return db('users as u')
+        .join('roles as r', 'u.role_id', 'r.id')
+        .select('u.id', 'u.email', 'u.f_name', 'u.l_name', 'u.location', 'u.avatar', 'u.hourly_rate', 'r.role', 'u.created_at', 'u.updated_at')
 }
 
 function findBy(filter) {
@@ -30,7 +31,8 @@ function findBy(filter) {
 }
 
 function findById(id) {
-    return db('users')
-        .where({ id })
-        .select('id', 'email', 'created_at', 'updated_at')
+    return db('users as u')
+        .where('u.id', id)
+        .join('roles as r', 'u.role_id', 'r.id')
+        .select('u.id', 'u.email', 'u.f_name', 'u.l_name', 'u.location', 'u.avatar', 'u.hourly_rate', 'r.role', 'u.created_at', 'u.updated_at')
 }

@@ -10,13 +10,14 @@ exports.up = function (knex) {
         tbl.string('l_name', 128).notNullable()
         tbl.string('location', 128).notNullable()
         tbl.string('avatar')
+        tbl.decimal('hourly_rate', 2).defaultsTo(0)
 
         //Foreign Key role_id => roles.id
         tbl.integer('role_id')
             .notNullable()
             .unsigned()
             .references('roles.id')
-            .onDelete('CASCADE')
+            .onDelete('RESTRICT')
             .onUpdate('CASCADE')
 
         //Timestamps

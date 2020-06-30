@@ -28,14 +28,14 @@ router.post('/register', validateRegister, checkExistingUsers, (req, res) => {
 
 //Login an existing user
 router.post('/login', validateLogin, (req, res) => {
-    const { username, password } = req.body
+    const { email, password } = req.body
 
-    Users.findBy({ username })
+    Users.findBy({ email })
         .then(([user]) => {
             if (user && bcrypt.compareSync(password, user.password)) {
                 const token = generateToken(user)
 
-                res.status(200).json({ token, message: `${user.username} is logged in!` })
+                res.status(200).json({ token })
             }
             else {
                 res.status(401).json({ message: 'Access denied - invalid credentials!' })

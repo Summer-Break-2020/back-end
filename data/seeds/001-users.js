@@ -21,10 +21,11 @@ exports.seed = function (knex) {
           l_name: 'Joy',
           location: 'Hemet, CA',
           avatar: '',
+          hourly_rate: 12.50,
           role_id: 2
         },
         {
-          email: 'gabby@rainbow.net',
+          email: 'gabby@unicornlover.net',
           password: '$2y$12$AXIiWeYRxkuwYx/k9oVq6eqi7nsamxxuNi9GUNddhTckE.QwoE9pG',
           f_name: 'Gabriella',
           l_name: 'Rose',
