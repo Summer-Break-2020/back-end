@@ -18,7 +18,7 @@ router.post('/register', validateRegister, checkExistingUsers, (req, res) => {
     userInfo.password = hashPassword(userInfo.password)
 
     Users.add(userInfo)
-        .then(user => {
+        .then(([user]) => {
             res.status(201).json(user)
         })
         .catch(error => {

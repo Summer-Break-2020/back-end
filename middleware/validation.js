@@ -9,7 +9,14 @@ module.exports = {
 function validateRegister(req, res, next) {
     const userInfo = req.body
 
-    if (!userInfo.email || !userInfo.password) {
+    if (
+        !userInfo.email ||
+        !userInfo.password ||
+        !userInfo.f_name ||
+        !userInfo.l_name ||
+        !userInfo.location ||
+        !userInfo.role_id
+    ) {
         res.status(400).json({ message: 'Bad Request - please provide required fields' })
     }
     else {
@@ -18,19 +25,25 @@ function validateRegister(req, res, next) {
 }
 
 async function checkExistingUsers(req, res, next) {
-    try {
-        const [email] = await Users.findBy({ email: req.body.email })
+    if (req.body.email) {
+        try {
+            const [email] = await Users.findBy({ email: req.body.email })
 
-        if (!email) {
-            next()
+            if (!email) {
+                next()
+            }
+            else {
+                res.status(400).json({ message: `email: ${email.email} already exists!` })
+            }
         }
-        else {
-            res.status(400).json({ message: `email: ${email.email} already exists!` })
+        catch (error) {
+            res.status(500).json({ error: error.message })
         }
     }
-    catch (error) {
-        res.status(500).json({ error: error.message })
+    else {
+        next()
     }
+
 }
 
 function validateLogin(req, res, next) {
