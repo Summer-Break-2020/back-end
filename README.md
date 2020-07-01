@@ -41,10 +41,12 @@
 - Authentication required to access these resources
 ---
 
-| Method | Endpoint         | Description                                              |
-| ------ | ---------------- | -------------------------------------------------------- |
-| GET    | `api/users`      | Returns a list of all users                              |
-| GET    | `api/users/:id`  | Returns the specified user                               |
+| Method | Endpoint         | Description                                                     |
+| ------ | ---------------- | --------------------------------------------------------------- |
+| GET    | `api/users`      | Returns a list of all users                                     |
+| GET    | `api/users/:id`  | Returns the specified user                                      |
+| PUT    | `api/users/:id`  | Updates the specified user and returns the updated user         |
+| DELETE | `api/users/:id`  | Deletes the specified user and returns status 204 if successful |
 
 ## Seed Data
 

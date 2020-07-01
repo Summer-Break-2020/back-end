@@ -4,7 +4,9 @@ module.exports = {
     add,
     find,
     findBy,
-    findById
+    findById,
+    update,
+    remove
 }
 
 async function add(user) {
@@ -35,4 +37,23 @@ function findById(id) {
         .where('u.id', id)
         .join('roles as r', 'u.role_id', 'r.id')
         .select('u.id', 'u.email', 'u.f_name', 'u.l_name', 'u.location', 'u.avatar', 'u.hourly_rate', 'r.role', 'u.created_at', 'u.updated_at')
+}
+
+function update(updates, id) {
+    return db('users')
+        .where('id', id)
+        .update(updates)
+        .then(count => {
+
+            if (count) {
+                return findById(id)
+            }
+            else {
+                return count
+            }
+        })
+}
+
+function remove(id) {
+    return db('users').where('id', id).del()
 }
